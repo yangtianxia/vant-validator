@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script type="module">
+    import { validator } from './../dist/index.test.mjs'
+
+    validator.add('named', {
+      preset: function(value) {
+        return /\d+/g.test(value)
+      },
+      tpl: '[0] 不符合要求'
+    })
+
+    const rules = validator({
+      name: {
+        required: true,
+        named: true,
+        minlength: 2,
+        maxlength: 8
+      }
+    })
+
+    console.dir(validator)
+    console.log(rules)
+  </script>
+</body>
+</html>
