@@ -1,6 +1,6 @@
 {
   "name": "@txjs/vant-validator",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "组件表单数据验证",
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.esm.mjs",
@@ -44,8 +44,9 @@
   "homepage": "https://github.com/yangtianxia/vant-validator#readme",
   "dependencies": {
     "@txjs/bool": "^0.0.6",
+    "@txjs/merge-properties": "^0.0.1-alpha-0",
     "@txjs/shared": "^0.0.9",
-    "@txjs/validator": "^0.0.6",
+    "@txjs/validator": "^0.0.8",
     "vue": "^3.2.47"
   },
   "devDependencies": {
