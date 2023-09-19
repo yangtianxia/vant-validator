@@ -1,6 +1,7 @@
 import type { Ref } from 'vue'
 import type { ValidatorRules, ValidatorRule as _ValidatorRule, Rule as _Rule } from '@txjs/validator'
-import BaseValidator, { extend } from '@txjs/validator'
+import BaseValidator from '@txjs/validator'
+import { mergeProperties } from '@txjs/merge-properties'
 import { Validator, type BaseTrigger } from './validator'
 
 const instance = new Validator()
@@ -12,7 +13,7 @@ const validator = Object.assign(
 	instance
 )
 
-extend(validator, instance, BaseValidator.prototype)
+mergeProperties(validator, instance, BaseValidator.prototype)
 
 export type ValidatorRule = _ValidatorRule<BaseTrigger, Ref<Error>>
 export type Rule = _Rule<BaseTrigger>
