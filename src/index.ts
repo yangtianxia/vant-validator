@@ -1,19 +1,17 @@
 import type { Ref } from 'vue'
 import type { ValidatorRules, ValidatorRule as _ValidatorRule, Rule as _Rule } from '@txjs/validator'
-import BaseValidator from '@txjs/validator'
-import { mergeProperties } from '@txjs/merge-properties'
 import { Validator, type BaseTrigger } from './validator'
 
 const instance = new Validator()
 
-instance.$trigger = 'onChange'
+instance.setTrigger('onChange')
 
 const validator = Object.assign(
 	(options: ValidatorRules<BaseTrigger>) => instance.init(options),
 	instance
 )
 
-mergeProperties(validator, instance, BaseValidator.prototype)
+Object.setPrototypeOf(validator, Object.getPrototypeOf(instance))
 
 export type ValidatorRule = _ValidatorRule<BaseTrigger, Ref<Error>>
 export type Rule = _Rule<BaseTrigger>
