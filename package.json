@@ -1,7 +1,7 @@
 {
   "name": "@txjs/vant-validator",
-  "version": "0.0.9",
-  "description": "组件表单数据验证",
+  "version": "0.10.0",
+  "description": "用于生成vant表单数据验证方法的库",
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.esm.mjs",
   "types": "./dist/index.d.ts",
@@ -19,8 +19,7 @@
     "lint": "eslint src",
     "build": "node build.js",
     "dev": "node build.js --watch",
-    "dev:test": "node build.js --watch --test",
-    "test": "node test/index.js"
+    "dev:test": "node build.js --watch --test"
   },
   "repository": {
     "type": "git",
@@ -43,10 +42,9 @@
   },
   "homepage": "https://github.com/yangtianxia/vant-validator#readme",
   "dependencies": {
-    "@txjs/bool": "^0.0.6",
-    "@txjs/merge-properties": "^0.0.1-alpha-0",
-    "@txjs/shared": "^0.0.9",
-    "@txjs/validator": "^0.0.8",
+    "@txjs/bool": "^0.0.8",
+    "@txjs/shared": "^0.0.14",
+    "@txjs/validator": "^0.0.9",
     "vue": "^3.2.47"
   },
   "devDependencies": {
