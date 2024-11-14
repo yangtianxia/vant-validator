@@ -7,7 +7,7 @@ type TriggerText = 'onChange' | 'onBlur'
 
 export type BaseTrigger = TriggerText | TriggerText[]
 
-export class Validator<Trigger = BaseTrigger, Message = Ref<Error | undefined>> extends BaseValidator<Trigger,	Message> {
+export class Validator<Trigger = BaseTrigger, Message = Ref<string | undefined>> extends BaseValidator<Trigger,	Message> {
 	constructor (config?: ValidatorConfigObject<Trigger>) {
 		super(config)
 	}
@@ -44,7 +44,7 @@ export class Validator<Trigger = BaseTrigger, Message = Ref<Error | undefined>> 
 		},
 		plan: ValidatorConfig<Trigger>
 	): ValidatorRule<Trigger, any>{
-		const message = ref<Error>()
+		const message = ref<string>()
 		trigger = this.trigger(trigger)
 		return {
 			ruleName,
@@ -62,12 +62,10 @@ export class Validator<Trigger = BaseTrigger, Message = Ref<Error | undefined>> 
 							(isFunction(plan.preset) && !plan.preset($$$value, value, tpl.type)) ||
 							(isArray(plan.preset) && !plan.preset.every((preset) => preset($$$value, value, tpl.type)))
 						) {
-							message.value =	new Error(
-								formatTpl(
-									tpl.value || (isPlainObject(plan.tpl) ? plan.tpl[tpl.type] : plan.tpl),
-									plan.inject ? $$$value : value,
-									label
-								)
+							message.value =	formatTpl(
+								tpl.value || (isPlainObject(plan.tpl) ? plan.tpl[tpl.type] : plan.tpl),
+								plan.inject ? $$$value : value,
+								label
 							)
 							resolve(false)
 						} else {
@@ -92,7 +90,7 @@ export class Validator<Trigger = BaseTrigger, Message = Ref<Error | undefined>> 
 			rule: Omit<Rule<Trigger>, 'label' | 'trigger' | 'custom'>
 		}
 	): ValidatorRule<Trigger, any> {
-		const message = ref<Error>()
+		const message = ref<string>()
 		trigger = this.trigger(trigger)
 		return {
 			ruleName,
@@ -109,9 +107,7 @@ export class Validator<Trigger = BaseTrigger, Message = Ref<Error | undefined>> 
 								resolve(true)
 							})
 							.catch((err: Error) => {
-								message.value = new Error(
-									formatTpl(err.message, undefined, label)
-								)
+								message.value = formatTpl(err.message, undefined, label)
 								resolve(false)
 							})
 					}
