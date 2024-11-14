@@ -1,6 +1,6 @@
 {
   "name": "@txjs/vant-validator",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "description": "用于生成vant表单数据验证方法的库",
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.esm.mjs",
