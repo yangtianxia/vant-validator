@@ -13,7 +13,7 @@ const validator = Object.assign(
 
 Object.setPrototypeOf(validator, Object.getPrototypeOf(instance))
 
-export type ValidatorRule = _ValidatorRule<BaseTrigger, Ref<Error>>
+export type ValidatorRule = _ValidatorRule<BaseTrigger, Ref<string | undefined>>
 export type Rule = _Rule<BaseTrigger>
 
 export { validator, type BaseTrigger }
